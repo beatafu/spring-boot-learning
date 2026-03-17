@@ -1,0 +1,49 @@
+# ===========================================
+# 开发环境配置
+# ===========================================
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/dev_db?useSSL=false
+    username: dev_user
+    password: ENC(S9inN8v2Da5tqn/nEPDWGQ==)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# 服务器配置
+server:
+  port: 8080
+
+jasypt:
+  encryptor:
+    password: my-secret-key
+    algorithm: PBEWithMD5AndDES
+    key-obtention-iterations: 1000
+    pool-size: 1
+    provider-name: SunJCE
+    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    string-output-type: base64
+
+
+# 日志配置
+logging:
+  level:
+    root: DEBUG
+    com.example: DEBUG
+  file:
+    name: logs/dev-app.log
+
+# 自定义配置
+app:
+  name: 我的应用-开发环境
+  debug: true
+  cache:
+    enabled: false
+
+# 第三方服务（使用Mock）
+external:
+  api:
+    url: http://localhost:9999/mock
+    timeout: 5000

@@ -1,0 +1,81 @@
+# ===========================================
+# 应用基础配置
+# ===========================================
+spring:
+  application:
+    name: config-app
+  profiles:
+    active: dev  # 默认激活开发环境配置
+
+
+
+
+
+# ===========================================
+# 服务器配置
+# ===========================================
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+  # ===========================================
+  # 数据库配置
+  # ===========================================
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# ===========================================
+# 自定义配置
+# ===========================================
+app:
+  name: 我的应用
+  version: 1.0.0
+  description: Spring Boot 4.x配置文件演示应用
+  owner: 开发团队
+  contact:
+    email: support@example.com
+    phone: 400-888-8888
+  features:
+    - 用户管理
+    - 订单管理
+    - 支付管理
+    - 报表统计
+  database:
+    host: localhost
+    port: 3306
+    name: demo_db
+  security:
+    admin-email: admin@example.com
+    session-timeout: 30
+    max-login-attempts: 5
+
+# ===========================================
+# 日志配置
+# ===========================================
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+  file:
+    name: logs/app.log
+    max-size: 10MB
+    max-history: 30
+
+# ===========================================
+# Actuator 监控配置
+# ===========================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,configprops,env
+  endpoint:
+    health:
+      show-details: always
+
+test:
+  priority: 来自classpath/application.yml（优先级最低）

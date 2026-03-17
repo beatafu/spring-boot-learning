@@ -1,0 +1,37 @@
+# ===========================================
+# 测试环境配置
+# ===========================================
+spring:
+  config:
+    activate:
+      on-profile: test
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://test-db-server:3306/test_db?useSSL=false
+    username: test_user
+    password: test_password
+
+# 服务器配置
+server:
+  port: 8081
+
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.example: INFO
+  file:
+    name: logs/test-app.log
+
+# 自定义配置
+app:
+  name: 我的应用-测试环境
+  debug: false
+  cache:
+    enabled: true
+
+# 第三方服务（测试环境）
+external:
+  api:
+    url: https://test-api.example.com
+    timeout: 10000
